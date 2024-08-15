@@ -2,6 +2,7 @@ package com._coder.bourse.dto;
 
 
 import com._coder.bourse.model.Production;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import java.util.List;
 public class ProductionDto {
 
     private Integer productionId;
-
+    @NotNull
     private Integer qte;
 
     private LocalDateTime dateDebut;
@@ -40,12 +41,13 @@ public class ProductionDto {
                 .build();
     }
 
-    public static Production toEntity(Production production ){
+    public static Production toEntity(ProductionDto productionDto ){
         return Production
                 .builder()
-                .qte(production.getQte())
-                .dateFin(production.getDateFin())
-                .dateDebut(production.getDateDebut())
+                .qte(productionDto.getQte())
+                .dateFin(productionDto.getDateFin())
+                .dateDebut(productionDto.getDateDebut())
+
                 .build();
     }
 }

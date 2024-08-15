@@ -30,16 +30,12 @@ public class CouncilDto {
     private String email;
 
     private Long population;
-
     private BigDecimal area;
-
     private String region;
-
     private  MultipartFile imageCouncil;
-
-/*    private String postalCode;
+    private String postalCode;
     private BigDecimal longitude;
-    private BigDecimal latitude;*/
+    private BigDecimal latitude;
 
 
     public static CouncilDto fromDto(Council council) {
@@ -47,7 +43,7 @@ public class CouncilDto {
         return CouncilDto
                 .builder()
                 .id(council.getId())
-                .councilName(council.getCommuneName())
+                .councilName(council.getCouncilName())
                 .email(council.getEmail())
                 .country(council.getCountry())
                 .mayorName(council.getMayorName())
@@ -61,7 +57,7 @@ public class CouncilDto {
         //String imagePath0 = ImageUtil.saveImage(imageCouncil,"council-image" );
         return Council
                 .builder()
-                .communeName(councilDto.getCouncilName())
+                .councilName(councilDto.getCouncilName())
                 .country(councilDto.getCountry())
                 .email(councilDto.getEmail())
                 .population(councilDto.getPopulation())

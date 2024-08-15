@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface CommuneRepository extends JpaRepository<Council,Integer> {
+public interface CouncilRepository extends JpaRepository<Council,Integer> {
 }

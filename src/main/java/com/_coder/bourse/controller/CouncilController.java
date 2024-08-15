@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/council" )
+@RequestMapping("/api/council" )
 @RequiredArgsConstructor
 public class CouncilController {
 

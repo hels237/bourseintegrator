@@ -3,24 +3,27 @@ package com._coder.bourse.service.impl;
 import com._coder.bourse.dto.CouncilDto;
 import com._coder.bourse.exception.CommuneNotFoundException;
 import com._coder.bourse.model.Council;
-import com._coder.bourse.repository.CommuneRepository;
+import com._coder.bourse.repository.CouncilRepository;
 import com._coder.bourse.repository.UserRepository;
 import com._coder.bourse.service.CouncilService;
 import com._coder.bourse.util.CouncilUtil;
+import com._coder.bourse.util.ImageUtil;
 import com._coder.bourse.validator.ObjectValidator;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class CouncilServiceImpl implements CouncilService {
 
-    private final CommuneRepository communeRepository;
+    private final CouncilRepository councilRepository;
     private final ObjectValidator<CouncilDto> objectValidator;
     private final UserRepository userRepository;
 
@@ -35,17 +38,17 @@ public class CouncilServiceImpl implements CouncilService {
         }catch (IOException exc){
             log.error("=========================>>>>>>>:"+exc.getMessage());
         }
-        return communeRepository.save(council).getId();
+        return councilRepository.save(council).getId();
     }
 
     @Override
     public List<CouncilDto> findAll() {
-        return communeRepository.findAll().stream().map(CouncilDto::fromDto).toList();
+        return councilRepository.findAll().stream().map(CouncilDto::fromDto).toList();
     }
 
     @Override
     public CouncilDto findById(Integer id) {
-        return communeRepository
+        return councilRepository
                 .findById(id)
                 .map(CouncilDto::fromDto)
                 .orElseThrow(
@@ -56,9 +59,17 @@ public class CouncilServiceImpl implements CouncilService {
 
     @Override
     public void delete(Integer id) {
-        if(id == null){
-                return;
+        if(id == null) return;
+        Optional<Council> council = councilRepository.findById(id);
+        try{
+            if(council.isPresent()){
+                ImageUtil.deleteImageFile(council.get().getImagePath());
+            }else{throw new EntityNotFoundException("PRODUCT NOT FOUND WITH ID: " + id);}
+
+        }catch (IOException ioe){
+            log.error("======================>>>>>>>>>:"+ioe.getMessage());
         }
-        communeRepository.deleteById(id);
+        councilRepository.deleteById(id);
+
     }
 }

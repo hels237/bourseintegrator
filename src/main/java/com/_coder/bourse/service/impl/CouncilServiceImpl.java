@@ -10,6 +10,8 @@ import com._coder.bourse.util.CouncilUtil;
 import com._coder.bourse.validator.ObjectValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -60,5 +62,10 @@ public class CouncilServiceImpl implements CouncilService {
                 return;
         }
         communeRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<Council> searchCouncilsByProduct(String productName, String productDesignation, Pageable pageable){
+        return communeRepository.findCouncilsByProductionAttributes(productName, productDesignation, pageable);
     }
 }

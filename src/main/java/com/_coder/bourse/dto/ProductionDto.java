@@ -1,6 +1,7 @@
 package com._coder.bourse.dto;
 
 
+import com._coder.bourse.model.Council;
 import com._coder.bourse.model.Production;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
@@ -42,12 +43,14 @@ public class ProductionDto {
     }
 
     public static Production toEntity(ProductionDto productionDto ){
+        Council councilEntity = new Council();
+        councilEntity.setId(productionDto.getCouncilId());
         return Production
                 .builder()
                 .qte(productionDto.getQte())
                 .dateFin(productionDto.getDateFin())
                 .dateDebut(productionDto.getDateDebut())
-
+                .council(councilEntity)
                 .build();
     }
 }

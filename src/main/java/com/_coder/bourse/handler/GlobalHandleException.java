@@ -3,6 +3,7 @@ package com._coder.bourse.handler;
 import com._coder.bourse.exception.CommuneNotFoundException;
 import com._coder.bourse.exception.ObjectValidationException;
 import com._coder.bourse.exception.UserNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,6 +11,18 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalHandleException {
+
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handlerException(EntityNotFoundException exception) {
+
+        final HttpStatus status = HttpStatus.NOT_FOUND;
+        ErrorResponse error= ErrorResponse.builder()
+                .messageError(exception.getMessage())
+                .httpErrorStatus(status.value())
+                .build();
+        return ResponseEntity.ok(error);
+    }
 
     @ExceptionHandler(CommuneNotFoundException.class)
     public ResponseEntity<ErrorResponse> handlerException(CommuneNotFoundException exception) {

@@ -1,7 +1,9 @@
 package com._coder.bourse.util;
 
 import com._coder.bourse.dto.ProductDto;
+import com._coder.bourse.model.Category;
 import com._coder.bourse.model.Product;
+import com._coder.bourse.model.Production;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,12 +37,17 @@ public class ProductUtil {
     public static Product productUtilEntity(ProductDto dto, MultipartFile productImage) throws IOException {
         String imagePath0 = ImageUtil.saveImage(productImage,"product-image" );
 
+        Production productionEntity = new Production();
+        Category categoryEntity = new Category();
+        productionEntity.setId(dto.getProductionId());
+        categoryEntity.setId(dto.getCategoryId());
+
         Product product = new Product();
         product.setDesignation(dto.getDesignation());
         product.setPrice(dto.getPrice());
         product.setDescription(dto.getDescription());
-        product.getProduction().setId(dto.getProductionId());
-        product.getCategory().setId(dto.getCategoryId());
+        product.setProduction(productionEntity);
+        product.setCategory(categoryEntity);
         product.setImagePath(imagePath0);
         return product;
     }

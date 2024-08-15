@@ -4,7 +4,6 @@ package com._coder.bourse.service.impl;
 import com._coder.bourse.dto.ProductionDto;
 import com._coder.bourse.repository.ProductionRepository;
 import com._coder.bourse.service.ProductionService;
-import com._coder.bourse.util.ProductionUtil;
 import com._coder.bourse.validator.ObjectValidator;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -24,10 +23,8 @@ public class ProductionServiceImpl implements ProductionService {
     @Override
     public Integer save(ProductionDto productionDto) {
         //validation
-        System.out.println("before validation "+productionDto);
         objectValidator.validate(productionDto);
-        System.out.println("after validation "+productionDto);
-        return productionRepository.save(ProductionUtil.productionEntityUtil(productionDto)).getId();
+        return productionRepository.save(ProductionDto.toEntity(productionDto)).getId();
     }
 
     @Override
@@ -48,4 +45,6 @@ public class ProductionServiceImpl implements ProductionService {
         if (id == null) return;
         productionRepository.deleteById(id);
     }
+
+
 }

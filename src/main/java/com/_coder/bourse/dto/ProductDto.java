@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.lang.NonNull;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 
@@ -35,7 +33,7 @@ public class ProductDto {
 
     private ProductionDto productionDto;
 
-    private MultipartFile image;
+    private String image;
 
 
 
@@ -48,6 +46,8 @@ public class ProductDto {
                 .price(product.getPrice())
                 .description(product.getDescription())
                 .categoryDto(CategoryDto.fromDto(product.getCategory()))
+                .productionDto(ProductionDto.fromDto(product.getProduction()))
+                .image(product.getImagePath())
                 .build();
     }
 

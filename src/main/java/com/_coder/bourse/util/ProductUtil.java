@@ -29,7 +29,7 @@ public class ProductUtil {
                 .description(description)
                 .categoryId(categoryId)
                 .productionId(productionId)
-                .image(productImage)
+                .imageProduct(productImage)
                 .build();
 
     }

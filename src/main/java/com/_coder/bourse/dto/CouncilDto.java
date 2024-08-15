@@ -32,7 +32,8 @@ public class CouncilDto {
     private Long population;
     private BigDecimal area;
     private String region;
-    private  String imageCouncil;
+    private  MultipartFile imageCouncil;
+    private String imagePath;
     private String postalCode;
     private BigDecimal longitude;
     private BigDecimal latitude;
@@ -50,7 +51,7 @@ public class CouncilDto {
                 .population(council.getPopulation())
                 .area(council.getArea())
                 .region(council.getRegion())
-                .imageCouncil(council.getImagePath())
+                .imagePath(council.getImagePath())
                 .postalCode(council.getPostalCode())
                 .longitude(council.getLongitude())
                 .latitude(council.getLatitude())

@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = new Product();
 
         try{
-            product = ProductUtil.productUtilEntity(productDto, productDto.getImage());
+            product = ProductUtil.productUtilEntity(productDto, productDto.getImageProduct());
         }catch (IOException exc){
             log.error("=========================>>>>>>>:"+exc.getMessage());
         }

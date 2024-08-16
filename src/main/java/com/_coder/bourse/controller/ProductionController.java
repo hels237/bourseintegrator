@@ -27,19 +27,19 @@ public class ProductionController {
 
     }
 
-    @Operation(summary = " get product by ID")
+    @Operation(summary = " get production by ID")
     @GetMapping("/{productionId}")
     public  ResponseEntity<ProductionDto> findProductionById(@PathVariable("productionId") Integer id) {
         return ResponseEntity.ok(productionService.findById(id));
     }
 
-    @Operation(summary = " get all products")
+    @Operation(summary = " get all productions")
     @GetMapping("/")
     public ResponseEntity<List<ProductionDto>> findAllProduction() {
         return ResponseEntity.ok(productionService.findAll());
     }
 
-    @Operation(summary = " delete product by ID")
+    @Operation(summary = " delete production by ID")
     @DeleteMapping("/{productionId}")
     public ResponseEntity<String> deleteProductionById(@PathVariable("productionId") Integer id) {
         productionService.delete(id);

@@ -40,10 +40,10 @@ public class WebSecurityConfiguration  {
                 .authorizeHttpRequests(configurer ->
                         configurer
                                 .requestMatchers("/api/product/**").permitAll()
-                                .requestMatchers("/api/council/**").hasRole("COUNCIL")
-                                .requestMatchers("/api/category/").permitAll()
-                                .anyRequest()
-                                .authenticated()
+                                //.requestMatchers("/api/council/**").hasRole("COUNCIL")
+                                //.requestMatchers("/api/category/").permitAll()
+                                .anyRequest().permitAll()
+                                //.authenticated()
 
                 );
 

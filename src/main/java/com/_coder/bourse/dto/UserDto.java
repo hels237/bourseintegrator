@@ -14,13 +14,26 @@ import lombok.Setter;
 public class UserDto {
 
     private Integer id;
+
+    private String firstName;
+
+    private String lastName;
+
     private String username;
+
+    private String email;
+
+    private String role;
+
     private String password;
 
     public static UserDto fromDto(User user){
         return UserDto
                 .builder()
                 .id(user.getId())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .email(user.getEmail())
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .build();
@@ -31,6 +44,9 @@ public class UserDto {
     public static User toEntity(UserDto userDto){
         return User
                 .builder()
+                .firstName(userDto.getFirstName())
+                .lastName(userDto.getLastName())
+                .email(userDto.getEmail())
                 .username(userDto.getUsername())
                 .password(userDto.getPassword())
                 .build();

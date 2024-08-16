@@ -34,7 +34,7 @@ public class ProductDto {
 
     private CategoryDto categoryDto;
 
-    private ProductionDto productionDto;
+    //private ProductionDto productionDto;
 
     @NotNull
     private MultipartFile imageProduct;
@@ -48,11 +48,10 @@ public class ProductDto {
                 .builder()
                 .id(product.getId())
                 .designation(product.getDesignation())
-                .status(product.getStatus())
                 .price(product.getPrice())
                 .description(product.getDescription())
                 .categoryDto(CategoryDto.fromDto(product.getCategory()))
-                .productionDto(ProductionDto.fromDto(product.getProduction()))
+                //.productionDto(ProductionDto.fromDto(product.getProduction()))
                 .imagePath(product.getImagePath())
                 .build();
     }

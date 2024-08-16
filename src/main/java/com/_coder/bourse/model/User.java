@@ -18,7 +18,14 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class User extends AbstractEntity {
 
+    private String firstName;
+
+    private String lastName;
+
+    private String email;
+
     private String username;
+
     private String password;
 
     @Enumerated(EnumType.STRING)

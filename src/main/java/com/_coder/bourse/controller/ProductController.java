@@ -46,13 +46,13 @@ public class ProductController {
 
     @Operation(summary = " get product by ID")
     @GetMapping("/{productId}")
-    public ResponseEntity<ProductDto> findProductById(@PathVariable("productId") Integer productId) {
+    public ResponseEntity<ProductDto> getProductById(@PathVariable("productId") Integer productId) {
         return ResponseEntity.ok(productService.findById(productId));
     }
 
     @Operation(summary = " get all products")
     @GetMapping("/")
-    public ResponseEntity<List<ProductDto>> findAllProducts() {
+    public ResponseEntity<List<ProductDto>> getAllProducts() {
         return ResponseEntity.ok(productService.findAll());
     }
 

@@ -12,8 +12,9 @@ SERVER_PORT: 8080
 
 ################################-----Email config---------##########################
 
-#EMAIL_HOST: smtp.gmail.com
-#EMAIL_PORT: 587
-#EMAIL_ID: m7hels@gmail.com
-#EMAIL_PASSWORD: estk elyc fudf oynx
-#VERIFY_EMAIL_HOST: http://localhost:${SERVER_PORT}
+EMAIL_HOST: smtp.gmail.com
+EMAIL_PORT: 587
+EMAIL_ID: m7hels@gmail.com
+EMAIL_PASSWORD: estk elyc fudf oynx
+
+VERIFY_EMAIL_HOST: http://localhost:${SERVER_PORT}

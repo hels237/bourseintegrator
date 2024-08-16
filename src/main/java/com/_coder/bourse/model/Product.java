@@ -31,10 +31,12 @@ public class Product extends AbstractEntity {
     private String imagePath;
 
     @ManyToOne
-    @JoinColumn(name = "production-id")
-    private Production production;
+    @JoinColumn(name = "councilId")
+    private Council council;
 
     @ManyToOne
-    @JoinColumn(name = "category-id")
+    @JoinColumn(name = "categoryId")
     private Category category;
+
+
 }

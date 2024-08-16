@@ -34,8 +34,11 @@ public class Council extends AbstractEntity{
     private String economicPotential;
     private String ImagePath;
 
+    private String matriculeCommunale;
+
     @OneToMany(mappedBy = "council")
-    private List<Production> productions;
+    private List<Product> products;
+
     
 
 }

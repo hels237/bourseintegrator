@@ -51,7 +51,7 @@ public class ProductDto {
                 .price(product.getPrice())
                 .description(product.getDescription())
                 .categoryDto(CategoryDto.fromDto(product.getCategory()))
-                //.productionDto(ProductionDto.fromDto(product.getProduction()))
+                //.productionDto(ProductionDto.fromDto(product.getProduction()))// cause of recursion
                 .imagePath(product.getImagePath())
                 .build();
     }

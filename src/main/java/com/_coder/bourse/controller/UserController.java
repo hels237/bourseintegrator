@@ -2,6 +2,7 @@ package com._coder.bourse.controller;
 
 import com._coder.bourse.dto.UserDto;
 import com._coder.bourse.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ public class UserController {
 
     private final UserService userService;
 
+    @Operation(summary = "register a user")
     @PostMapping("/")
     public ResponseEntity<String> register(@RequestBody UserDto userDto) {
         userService.save(userDto);
@@ -39,5 +41,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("USER DELETED SUCCESSFUllY");
     }
 
+    @PostMapping("/mail/{userId}")
+    public ResponseEntity<?> sendMessage(@PathVariable("userId") Integer userId) {
+        return ResponseEntity.ok(userService.sendEmailUser(userId));
+    }
 
 }

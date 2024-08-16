@@ -25,5 +25,5 @@ public class Category  extends AbstractEntity{
     private String description;
 
     @OneToMany(mappedBy = "category")
-    private List<Product> products ;
+    private List<Product> products;
 }

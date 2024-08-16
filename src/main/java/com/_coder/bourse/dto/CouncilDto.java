@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,6 +38,9 @@ public class CouncilDto {
     private String postalCode;
     private BigDecimal longitude;
     private BigDecimal latitude;
+    private String matriculeCommunale;
+
+    private List<ProductDto> productDtos;
 
 
     public static CouncilDto fromDto(Council council) {
@@ -55,6 +59,7 @@ public class CouncilDto {
                 .postalCode(council.getPostalCode())
                 .longitude(council.getLongitude())
                 .latitude(council.getLatitude())
+                .productDtos(council.getProducts().stream().map(ProductDto::fromDto).toList())
                 .build();
     }
 

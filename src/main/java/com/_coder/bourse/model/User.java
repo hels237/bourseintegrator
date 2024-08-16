@@ -28,6 +28,8 @@ public class User extends AbstractEntity {
 
     private String password;
 
+    private Boolean isEnabled;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 

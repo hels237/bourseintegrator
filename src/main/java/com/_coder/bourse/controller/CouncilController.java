@@ -23,6 +23,7 @@ public class CouncilController {
 
     @Operation(summary = " create a council")
     @PostMapping(value = "/", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    //requestBody
     public ResponseEntity<String> createCouncil(
             @RequestParam("name") String councilName,
             @RequestParam("country") String country,

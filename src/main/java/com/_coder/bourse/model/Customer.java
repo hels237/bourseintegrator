@@ -2,8 +2,6 @@ package com._coder.bourse.model;
 
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,15 +11,14 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @Entity
-@Table(name = "log-in")
+@Table(name = "customer")
 @SuperBuilder
 @NoArgsConstructor
-public class Login extends AbstractEntity{
+public class Customer extends AbstractEntity {
 
-    private String username;
-    private String password;
+    private String firstName;
 
-    @OneToOne
-    @JoinColumn(name = "user-id")
-    private User user;
+    private String lastName;
+
+    private String email;
 }

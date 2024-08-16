@@ -4,6 +4,7 @@ import com._coder.bourse.dto.ProductDto;
 import com._coder.bourse.model.Product;
 import com._coder.bourse.service.ProductService;
 import com._coder.bourse.util.ProductUtil;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,6 +23,8 @@ public class ProductController {
     private final ProductService productService;
     private final CategoryController categoryController;
 
+
+    @Operation(summary = " create a product")
     @PostMapping(value = "/",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> createProduct(
             @RequestParam("designation") String productName,
@@ -41,16 +44,19 @@ public class ProductController {
     }
 
 
+    @Operation(summary = " get product by ID")
     @GetMapping("/{productId}")
     public ResponseEntity<ProductDto> findProductById(@PathVariable("productId") Integer productId) {
         return ResponseEntity.ok(productService.findById(productId));
     }
 
+    @Operation(summary = " get all products")
     @GetMapping("/")
     public ResponseEntity<List<ProductDto>> findAllProducts() {
         return ResponseEntity.ok(productService.findAll());
     }
 
+    @Operation(summary = " delete product by ID")
     @DeleteMapping("/{productId}")
     public ResponseEntity<String> deleteProductById(@PathVariable("productId") Integer productId) {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(" PRODUCT SUCCESSFULLY DELETED !");

@@ -4,6 +4,7 @@ package com._coder.bourse.controller;
 import com._coder.bourse.dto.CouncilDto;
 import com._coder.bourse.service.CouncilService;
 import com._coder.bourse.util.CouncilUtil;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,6 +21,7 @@ public class CouncilController {
 
     private final CouncilService councilService;
 
+    @Operation(summary = " create a council")
     @PostMapping(value = "/", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> createCouncil(
             @RequestParam("name") String councilName,
@@ -38,16 +40,19 @@ public class CouncilController {
         return ResponseEntity.status(HttpStatus.CREATED).body(" COUNCIL SUCCESSFULLY CREATED !");
     }
 
+    @Operation(summary = " get council by ID ")
     @GetMapping("/{council-id}")
     public ResponseEntity<CouncilDto> findCouncilById(@PathVariable("council-id") Integer id) {
         return ResponseEntity.ok(councilService.findById(id));
     }
 
+    @Operation(summary = " find all council")
     @GetMapping("/")
     public ResponseEntity<List<CouncilDto>> findAllCouncil() {
         return ResponseEntity.ok(councilService.findAll());
     }
 
+    @Operation(summary = " get council by ID ")
     @DeleteMapping("/{council-id}")
     public ResponseEntity<String> deleteCouncilById(@PathVariable("council-id") Integer id) {
         councilService.delete(id);

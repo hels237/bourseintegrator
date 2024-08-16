@@ -24,6 +24,7 @@ public class ProductionDto {
 
     private LocalDateTime dateFin;
 
+    @NotNull
     private Integer councilId;
 
     private List<ProductDto> productDto;

@@ -13,33 +13,28 @@ import lombok.Setter;
 @Builder
 public class UserDto {
 
-    private Integer userId;
-    @NotNull
-    private String firstName;
-    @NotNull
-    private String lastName;
-    @NotNull @Email
-    private String email;
+    private Integer id;
+    private String username;
+    private String password;
 
     public static UserDto fromDto(User user){
         return UserDto
                 .builder()
-                .userId(user.getId())
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
-                .email(user.getEmail())
+                .id(user.getId())
+                .username(user.getUsername())
+                .password(user.getPassword())
                 .build();
+
     }
 
 
     public static User toEntity(UserDto userDto){
         return User
                 .builder()
-                .id(userDto.getUserId())
-                .firstName(userDto.getFirstName())
-                .lastName(userDto.getLastName())
-                .email(userDto.getEmail())
+                .username(userDto.getUsername())
+                .password(userDto.getPassword())
                 .build();
+
     }
 
 }

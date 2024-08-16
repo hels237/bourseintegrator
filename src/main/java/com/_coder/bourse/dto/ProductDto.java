@@ -26,14 +26,17 @@ public class ProductDto {
    @NotNull
     private String description;
 
+   @NotNull
     private Integer categoryId;
 
+   @NotNull
     private Integer productionId;
 
     private CategoryDto categoryDto;
 
     private ProductionDto productionDto;
 
+    @NotNull
     private MultipartFile imageProduct;
 
     private String imagePath;

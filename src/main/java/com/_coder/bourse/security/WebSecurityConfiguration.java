@@ -39,9 +39,9 @@ public class WebSecurityConfiguration  {
         http
                 .authorizeHttpRequests(configurer ->
                         configurer
-                                .requestMatchers("/api/product/**").permitAll()
-                                .requestMatchers("/api/council/**").hasRole("COUNCIL")
-                                .requestMatchers("/api/category/").permitAll()
+                                .requestMatchers("/api/**").permitAll()
+                                //.requestMatchers("/api/council/**").hasRole("COUNCIL")
+                                //.requestMatchers("/api/category/").permitAll()
                                 .anyRequest()
                                 .authenticated()
 

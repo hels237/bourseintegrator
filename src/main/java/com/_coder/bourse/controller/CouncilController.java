@@ -63,14 +63,18 @@ public class CouncilController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(" COUNCIL SUCCESSFULLY DELETED !");
     }
 
-//    @GetMapping("/search-councils")
-//    public Page<Council> searchCouncils(
-//            @RequestParam String productName,
-//            @RequestParam(required = false) String productDesignation,
-//            @RequestParam(defaultValue = "0") int page,
-//            @RequestParam(defaultValue = "5") int size){
-//        Pageable pageable = PageRequest.of(page, size);
-//        return councilService.searchCouncilsByProduct(productName, productDesignation, pageable);
-//    }
+    @GetMapping("/search-councils/{productName}/{page}/{size}")
+    public Page<Council> searchCouncils(
+            @PathVariable("productName") String productName,
+            @PathVariable(required = false, value = "page") int page,
+            @PathVariable(required = false, value = "size") int size
+    ){
+        if(size == 0){
+            size = 2;
+        }
+        Pageable pageable = PageRequest.of(page, size);
+        System.out.println("====================================>>>>>>>>>>search word: "+productName);
+        return councilService.searchCouncilsByProduct(productName, pageable);
+    }
 
 }

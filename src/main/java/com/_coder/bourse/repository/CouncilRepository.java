@@ -8,14 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CouncilRepository extends JpaRepository<Council, Integer> {
-//    @Query("SELECT DISTINCT c FROM Council c " +
-//            "JOIN c.productions p " +
-//            "JOIN p.products pr " +
-//            "WHERE pr.designation LIKE %:MproductDescription%")
-//    Page<Council> findCouncilsByProductionAttributes(
-//            @Param("productName") String productName,
-//            @Param("productDescription") String productDescription,
-//            Pageable pageable);
+    @Query(value = "select * from Council c " +
+            "join c.productions p " +
+            "join p.products pr " +
+            "where pr.designation like %?1%", nativeQuery = true)
+    Page<Council> findCouncilsByProductionAttributes(String productName, Pageable pageable);
 }

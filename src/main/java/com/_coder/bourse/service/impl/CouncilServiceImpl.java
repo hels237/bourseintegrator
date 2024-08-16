@@ -75,8 +75,9 @@ public class CouncilServiceImpl implements CouncilService {
 
     }
 
-//    @Override
-//    public Page<Council> searchCouncilsByProduct(String productName, String productDesignation, Pageable pageable){
-//        return councilRepository.findCouncilsByProductionAttributes(productName, productDesignation, pageable);
-//    }
+    @Override
+    public Page<Council> searchCouncilsByProduct(String productName, Pageable pageable){
+        System.out.println("====================================>>>>>>>>>>service impl word: "+productName);
+        return councilRepository.findCouncilsByProductionAttributes(productName, pageable);
+    }
 }

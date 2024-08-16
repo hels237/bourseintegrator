@@ -41,9 +41,9 @@ public class WebSecurityConfiguration  {
                         configurer
                                 .requestMatchers("/api/**").permitAll()
                                 //.requestMatchers("/api/council/**").hasRole("COUNCIL")
-                                //.requestMatchers("/api/category/").permitAll()
-                                .anyRequest()
-                                .authenticated()
+                                .requestMatchers("/api/council/**").permitAll()
+                                .anyRequest().permitAll()
+                                //.authenticated()
 
                 );
 

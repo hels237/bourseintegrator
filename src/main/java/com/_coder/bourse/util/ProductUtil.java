@@ -18,7 +18,7 @@ public class ProductUtil {
             BigDecimal price,
             String description,
             Integer categoryId,
-            Integer productionId,
+            Integer councilId,
             MultipartFile productImage)  {
 
 
@@ -28,7 +28,7 @@ public class ProductUtil {
                 .price(price)
                 .description(description)
                 .categoryId(categoryId)
-                .productionId(productionId)
+                .councilId(councilId)
                 .imageProduct(productImage)
                 .build();
 
@@ -42,7 +42,7 @@ public class ProductUtil {
         categoryEntity.setId(dto.getCategoryId());
 
         Council councilEntity = new Council();
-        councilEntity.setId(dto.getProductionId());
+        councilEntity.setId(dto.getCouncilId());
 
         Product product = new Product();
         product.setDesignation(dto.getDesignation());

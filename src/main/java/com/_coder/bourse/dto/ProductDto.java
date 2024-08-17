@@ -25,16 +25,14 @@ public class ProductDto {
 
    @NotNull
     private String description;
-
    @NotNull
     private Integer categoryId;
-
    @NotNull
-    private Integer productionId;
+   private Integer councilId;
 
     private CategoryDto categoryDto;
 
-    //private ProductionDto productionDto;
+    private CouncilDto councilDto;
 
     @NotNull
     private MultipartFile imageProduct;
@@ -50,7 +48,8 @@ public class ProductDto {
                 .designation(product.getDesignation())
                 .price(product.getPrice())
                 .description(product.getDescription())
-                .categoryDto(CategoryDto.fromDto(product.getCategory()))
+                .categoryId(product.getCategory().getId())
+                .councilId(product.getCouncil().getId())
                 //.productionDto(ProductionDto.fromDto(product.getProduction()))// cause of recursion
                 .imagePath(product.getImagePath())
                 .build();

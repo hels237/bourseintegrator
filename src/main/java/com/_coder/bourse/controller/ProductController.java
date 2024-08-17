@@ -31,7 +31,7 @@ public class ProductController {
             @RequestParam("price") BigDecimal price,
             @RequestParam("description") String description,
             @RequestParam("category") Integer categoryId,
-            @RequestParam("production") Integer productionId,
+            @RequestParam("council") Integer productionId,
             @RequestParam("image") MultipartFile imageProduct
     ) {
 

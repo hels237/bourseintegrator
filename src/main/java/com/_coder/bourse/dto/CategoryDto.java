@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @Builder
@@ -17,11 +19,14 @@ public class CategoryDto {
 
     private String description;
 
+    private List<ProductDto> products;
+
     public static CategoryDto fromDto(Category category) {
         return CategoryDto
                 .builder()
                 .categoryId(category.getId())
                 .categoryName(category.getCategoryName())
+                .products(category.getProducts().stream().map(ProductDto::fromDto).toList())
                 .description(category.getDescription())
                 .build();
     }
